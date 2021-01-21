@@ -11,6 +11,8 @@ body {
     color: #000000;
     border-left: 1px solid black;
     padding: 10px;
+    width: 100%;
+    height: 100%;
   }
   
   .jumbotron {
@@ -49,12 +51,12 @@ body {
   
   .present {
     background-color: #ff6961;
-    color: white;
+    color: black;
   }
   
   .future {
     background-color: #77dd77;
-    color: white;
+    color: black;
   }
   
   .saveBtn {
@@ -63,9 +65,11 @@ body {
     border-bottom-right-radius: 15px;
     background-color: #06AED5;
     color: white;
+    /* padding-top: 1.75rem; */
   }
   
-  .saveBtn i:hover {
-    font-size: 20px;
+  .saveBtn:hover {
+    font-size: 25px;
     transition: all .3s ease-in-out;
+    cursor: pointer;
   }

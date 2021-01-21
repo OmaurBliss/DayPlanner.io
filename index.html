@@ -108,8 +108,29 @@ var dayPlan = [
 // gets data for the header date
 function getHeaderDate() {
     var currentHeaderDate = moment().format('dddd, MMMM Do');
+    console.log(currentHeaderDate)
     $("#currentDay").text(currentHeaderDate);
 }
+    // saves data to localStorage
+function saveReminders() {
+    localStorage.setItem("dayplan", JSON.stringify(dayPlan));
+}
+
+// sets any data in localStorage to the view
+function displayReminders() {
+    dayPlan.forEach(function (_thisHour) {
+        $(`#${_thisHour.id}`).val(_thisHour.reminder);
+        
+    })
+}
+
+// sets any existing localStorage data to the view if it exists
+function init() {
+    var storedDay = JSON.parse(localStorage.getItem("dayplan"));
+
+    if (storedDay) {
+        dayPlan = storedDay;
+    }
     </script>
   </body>
 </html>
