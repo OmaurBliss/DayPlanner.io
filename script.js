@@ -1,44 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Work Day Scheduler</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  </head>
-
-  <body>
-    <header class="jumbotron">
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead"></p>
-    </header>
-    <div class="container">
-      <!-- Timeblocks go here -->
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- <script type="text/javascript" src="./script.js"></script> -->
-    //<script>
-      //Planner var for time scheduler
-      //if local storage exists set local storage equal to 
 var dayPlan = [
     {
         id: "0",
@@ -114,7 +73,7 @@ function getHeaderDate() {
 
 // saves data to localStorage
 function saveReminders() {
-    localStorage.setItem("dayplan", JSON.stringify(dayPlan));
+    localStorage.setItem("myDay", JSON.stringify(dayPlan));
 }
 
 // sets any data in localStorage to the view
@@ -140,9 +99,9 @@ function init() {
 // loads header date
 getHeaderDate();
 
-// scheduler body layout
+// creates the visuals for the scheduler body
 dayPlan.forEach(function(thisHour) {
-    // rows for hour
+    // creates timeblocks row
     var hrRow = $("<form>").attr({
         "class": "row"
     });
@@ -194,13 +153,9 @@ init();
 // saves data to be used in localStorage
 $(".saveBtn").on("click", function(event) {
     event.preventDefault();
-    var saveIndex = $(this).siblings(".col-md-9").children().attr("id");
-    console.log($(this).siblings(".col-md-9").children());
-    dayPlan[saveIndex].reminder = $(this).siblings(".col-md-9").children().val();
+    var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+    dayPlan[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
    
     saveReminders();
     displayReminders();
 })
-    </script>
-  </body>
-</html>
